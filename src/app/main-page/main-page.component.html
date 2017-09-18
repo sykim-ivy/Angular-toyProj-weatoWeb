@@ -1,0 +1,70 @@
+<div class="inputArea">
+    <!-- 여행장소 입력 -->
+      <md-card class="mainTitle">
+                <md-icon class="titleIcon">map</md-icon>
+                <span>어디로 떠나볼까요?</span>
+      </md-card>
+      <md-card class="mainIptForm">
+          <md-select class="selectLocation twoIptL" placeholder="지역" [(ngModel)]="tourInputData.areaCode" (ngModelChange)="onAreaChange($event)">
+              <md-option *ngFor="let areaCode of areaCodeArr" [value]="areaCode.code">
+                {{ areaCode.name }}
+              </md-option>
+          </md-select>
+          <md-select class="selectLocation twoIptR" placeholder="시군구" [(ngModel)]="tourInputData.sigunguCode">
+              <md-option *ngFor="let sigunguCode of sigunguCodeArr" [value]="sigunguCode.code">
+                {{ sigunguCode.name }}
+              </md-option>
+          </md-select>
+      </md-card>
+
+      <!-- 여행기간 입력 -->
+      <md-card class="mainTitle">
+          <md-icon class="titleIcon">card_travel</md-icon>
+          <span>여행기간은?</span> 
+          <span class="placeholderTitle">(년-월-일)</span>
+      </md-card>
+      <md-card class="mainIptForm">
+          <md-form-field class="selectLocation twoIptL">
+              <input mdInput [mdDatepicker]="picker" [mdDatepickerFilter]="startDateFilter" 
+                placeholder="시작일" [(ngModel)]="tourInputData.startDate" (dateChange)="onDateChange($event, true)">
+              <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+              <md-datepicker touchUi="true" #picker></md-datepicker>
+          </md-form-field>
+    
+          <md-form-field class="selectLocation twoIptR">
+              <input mdInput [mdDatepicker]="picker2" [mdDatepickerFilter]="endDateFilter" 
+                placeholder="종료일"[(ngModel)]="tourInputData.endDate" (dateChange)="onDateChange($event, false)">
+              <md-datepicker-toggle mdSuffix [for]="picker2"></md-datepicker-toggle>
+              <md-datepicker touchUi="true" #picker2></md-datepicker>
+          </md-form-field>
+      </md-card>
+
+      <!-- 여행테마 입력 -->
+      <md-card class="mainTitle">
+          <md-icon class="titleIcon">movie_filter</md-icon>
+          <span>이번 여행테마는?</span> 
+          <span class="placeholderTitle">(선택값)</span>
+      </md-card>
+      <md-card class="mainIptForm">
+          <md-select id="cat1" class="selectTourTheme" placeholder="대분류를 선택해주세요." [(ngModel)]="tourInputData.cat1" (ngModelChange)="onCat1Change()">
+              <md-option *ngFor="let cat1 of cat1Arr" [value]="cat1.code">
+                {{ cat1.name }}
+              </md-option>
+          </md-select>
+          <md-select id="cat2" class="selectTourTheme" placeholder="중분류" [(ngModel)]="tourInputData.cat2" [style.display]="isShowCat2 ? 'inherit' : 'none'" (ngModelChange)="onCat2Change()">
+              <md-option *ngFor="let cat2 of cat2Arr" [value]="cat2.code">
+                {{ cat2.name }}
+              </md-option>
+          </md-select>
+          <md-select id="cat3" class="selectTourTheme" placeholder="소분류" [(ngModel)]="tourInputData.cat3" [style.display]="isShowCat3 ? 'inherit' : 'none'">
+              <md-option *ngFor="let cat3 of cat3Arr" [value]="cat3.code">
+                {{ cat3.name }}
+              </md-option>
+          </md-select>
+      </md-card>
+
+</div>
+
+<div style="text-align:center">
+    <button (click)="getSearchResult()" class="bottomBtnArea" md-raised-button color="warn">여행정보 보러가기</button>
+</div>

@@ -1,0 +1,1 @@
+export * from './dialog-tour-place-info/dialog-tour-place-info.component';

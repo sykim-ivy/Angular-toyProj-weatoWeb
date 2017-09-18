@@ -1,0 +1,63 @@
+md-dialog-container {
+    padding: 20px 5px;
+}
+
+.mat-dialog-content {
+    padding: 0 12px;
+}
+
+.listTitle_d {
+    text-align: center;
+    font-size: 1.47em;
+    font-weight: bold;
+}
+
+.titleIcon_d {
+    vertical-align: middle;
+    color :  rgb(177, 0, 14);
+    font-size: 20pt;
+}
+
+.listItemRow3_d {
+    margin-bottom: 10px;
+    text-align: justify;
+    text-align-last: start;
+}
+
+.listImg_d {
+    width: 217px;
+    height: 163px;
+    margin-bottom: 3px;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;   
+}
+
+.listItemRow_d {
+    font-size: 11pt;
+    font-weight: 700;
+}
+
+.btn_d {
+    width: 100%;
+    background-color: steelblue;
+    padding: 0px;
+    color: white;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: 'Yanolja_Bold', sans-serif;
+}
+
+#showMapTxt {
+    font-size: 10pt;
+    text-decoration: underline;
+    color: #60a73b;
+    margin-left: 34px;
+}
+
+.mapArea {
+    margin-top: 7px;
+    width:100%;
+    min-height:200px;
+    background-color: aliceblue;
+}

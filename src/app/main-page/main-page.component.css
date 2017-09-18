@@ -1,0 +1,57 @@
+.inputArea {
+    margin: 80px 0 45px 0;
+}
+
+.mainTitle {
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 17px 16px;
+    margin-top: 1px;
+}
+.titleIcon {
+    float: left; 
+    margin-right: 11px;
+    
+}
+
+.mainIptForm {
+    padding: 13px 16px;
+}
+.selectLocation {
+    width: 49%;    
+}
+.twoIptR {
+    position: relative;
+    right: 0px;
+    margin-right: auto;
+}
+.twoIptL {
+    position: relative;
+    left: 0px;
+    margin-left: auto;
+}
+
+.placeholderTitle {
+    margin-left: 5px;
+    font-size: 0.67em;
+    color: #9CA3B2;
+    font-weight: 100;
+}
+
+.selectTourTheme {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.bottomBtnArea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.3em;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* 중소 분류는 상위값을 선택해야 화면에 나타남 */
+#cat3 {
+    display: none;
+}

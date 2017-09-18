@@ -1,0 +1,128 @@
+<div class="inputArea">
+        <!-- <spinner-component  [spinnerShow] = "true" >
+                <div class = "spinner-2" > 
+                  <div class = "double-bounce1" > </div > 
+                  <div class = "double-bounce2" > </div > 
+                </div >
+        </spinner-component > -->
+    <!-- 타이틀 영역 -->
+      <md-card class="mainTitle topTitle">
+          <md-icon class="backIcon" (click)="goBack()">navigate_before</md-icon>
+          <span>'{{tourInputData.areaName}} {{tourInputData.sigunguName}}' 여행정보</span>
+      </md-card>
+
+      <!-- 날씨정보 영역 -->
+      <md-card class="mainTitle resultTitle" >
+          <md-icon class="titleIcon">wb_sunny</md-icon>
+          <span>'{{tourInputData.startDateStr}} ~ {{tourInputData.endDateStr}}' </span> 
+          <span>날씨</span> 
+          <!-- <span class="placeholderTitle">(0박 0일)</span> -->          
+      </md-card>
+      
+      <md-card class="mainIptForm" >
+            <div class="noDataText" *ngIf="tourDayWeatherArr?.length==0">
+                    검색하신 여행날짜의 <span class="noDataHighlight">날씨 정보</span>가 지원되지 않습니다.
+                    <br/>
+                    <p class="noDataDesc">※ 오늘로부터 3~10일 이후 날씨정보만 지원가능 ※</p>
+            </div>
+            <!-- 날씨 영역 -->
+            <md-card class="oneOfThreeCell" *ngFor="let weatherItem of tourDayWeatherArr | paginate: { itemsPerPage: 3, currentPage : p}">
+                <md-card-header class="contentCenter">
+                    <md-card-title class="wDay" *ngIf="tourDayWeatherArr"> {{ weatherItem?.day }}일 ({{ weatherItem?.dweek }}) </md-card-title>
+                </md-card-header>
+                <img md-card-image class="wIcon" *ngIf="tourDayWeatherArr && weatherItem.src else noWdata0" [src]="weatherItem?.src">
+                <ng-template #noWdata0><img md-card-image class="wIcon_noWeather" *ngIf="tourDayWeatherArr" src="../../assets/img/weather_planet3.PNG"></ng-template>
+                
+                <md-card-content *ngIf="tourDayWeatherArr">
+                    <div class="wContent wContent_existData" *ngIf="weatherItem?.amNameday else noWdata1"> {{weatherItem?.amNameday}} </div>
+                    <ng-template #noWdata1><div class="wContent wContent_noData">미지원날짜</div></ng-template>
+                    <div class="wContent2" *ngIf="weatherItem?.tmaxday else noWdata2"> {{weatherItem?.tmaxday}} </div>
+                    <ng-template #noWdata2><div class="wContent2 wContent2_noData">최고 : --°C</div></ng-template>
+                    <div class="wContent2" *ngIf="weatherItem?.tminday else noWdata3"> {{weatherItem?.tminday}} </div>
+                    <ng-template #noWdata3><div class="wContent2 wContent2_noData">최저 : --°C</div></ng-template>
+                </md-card-content>
+            </md-card>
+               
+
+            <!-- 이전 이후 날씨 조회버튼  -->
+            <div *ngIf="tourDayWeatherArr?.length>0"> 
+                <pagination-controls class="wPaginatorBtn" previousLabel="" (pageChange)="p = $event" maxSize="0" nextLabel=""></pagination-controls>                    
+                <!-- <span id="wPaginatorText"> <span *ngIf="tourDayWeatherArr?.length>1">(1-3) of</span> {{tourInputData.tourDay}}days</span> -->
+            </div>
+            
+      </md-card>
+
+      <!-- 테마별 추천관광지 영역 -->
+      <md-card id="recommendLoc" class="mainTitle resultTitle">
+          <md-icon class="titleIcon" (click)="scrollToBottom()">beach_access</md-icon>
+          <span>{{tourThemeStr}} 추천관광지</span> 
+          <span class="placeholderTitle" *ngIf="areaBasedListArr">({{ areaBasedPageInfo.totalCount}})</span>
+      </md-card>
+      <!-- 추천광광지 리스트 -->
+      <md-card id="listAreaCard"  *ngIf="!areaBasedListArr || areaBasedListArr.length==0">
+        <div class="noDataText">
+            검색하신 조건에서 <span class="noDataHighlight">여행 정보</span> 검색결과가 없습니다.
+            <br/>
+            <p class="noDataDesc">- 검색조건 : '{{tourInputData.areaName}} {{tourInputData.sigunguName}}'지역 {{tourThemeStr}}정보 -</p>
+        </div>
+      </md-card>
+      <md-card id="listAreaCard" *ngIf="areaBasedListArr || areaBasedListArr.length>0">
+        <div>
+          <md-list>
+              <md-list-item *ngFor="let areaBasedItem of areaBasedListArr; let idx = index;" class="listAreaItem">
+                <div class="w100" md-line *ngIf="areaBasedItem">
+                    <div (click)="showOverInfoDialog(idx);">
+                        <div class="listSubTitle">{{getContenttypeNameForId(areaBasedItem.contenttypeid)}}</div>
+                        <div class="listTitle white_space">{{areaBasedItem.title}}</div>
+                    </div>
+                    <div  *ngIf="areaBasedItem" (click)="showOverInfoDialog(idx);">
+                        <img *ngIf="areaBasedItem.firstimage; else loadImg" class="listImg" [src]="areaBasedItem?.firstimage">
+                        <ng-template #loadImg><img class="listImg listImgLoad" src="../../assets/img/loadImg.jpg"></ng-template>
+                    </div>
+                    <div *ngIf="areaBasedItem" (click)="showOverInfoDialog(idx);" class="listItemRow listItemRow2 white_space_threeDot" >
+                        <md-icon class="listIcon">mouse</md-icon>
+                        <span [style.visibility]="areaBasedItem.readcount ? 'visible' : 'hidden'">{{areaBasedItem.readcount | pipeCommaSeparatedNumber }} 회 조회</span>
+                        <md-icon class="listIcon">phone</md-icon>
+                        <span *ngIf="areaBasedItem?.tel">{{areaBasedItem.tel}}</span>
+                    </div>
+                    <div *ngIf="areaBasedItem" (click)="showOverInfoDialog(idx);" class="listItemRow listItemRow3 white_space_threeDot">
+                        <md-icon id="listLocationIcon" class="listIcon">location_on</md-icon>
+                        <span [style.visibility]="areaBasedItem.addr1 ? 'visible' : 'hidden'">{{areaBasedItem.addr1}} </span> 
+                        <span *ngIf="areaBasedItem?.addr2">{{areaBasedItem.addr2}}</span>
+                    </div>
+                    <div  class="listItemRow listItemRow4" *ngIf="areaBasedItem">                        
+                        <button md-raised-button class="resultPageBtn">일정추가</button>
+                    </div>
+                </div>
+              </md-list-item>
+            <!--
+              <md-list-item>
+                    <div mdLine class="w100">
+                        <div mdLine >
+                          <div class="listSubTitle">자연생태관광지</div>
+                          <span class="listTitle">다빈치모텔[우수숙박시설 굿스테이]</span>                          
+                        </div>
+                        <div mdLine class="listItemRow2">
+                            <p id="listItemHits">
+                              <md-icon class="listIcon">mouse</md-icon>
+                              <span>00,000회 조회</span>
+                            </p>
+                            <p id="listItemPhone">
+                                <md-icon class="listIcon">phone</md-icon>
+                                <span>000-0000-0000</span>
+                            </p>
+                        </div>
+                        <div mdLine >
+                            <md-icon id="listLocationIcon" class="listIcon">location_on</md-icon>
+                            <span>강원도 강릉시 강동면 헌화로 920-40000000000000000 </span>
+                        </div>
+                        <div mdLine >
+                            <button md-raised-button color="primary" class="resultPageBtn">일정추가</button>
+                        </div>
+                    </div>
+                </md-list-item> 
+            -->
+          </md-list>
+        </div>
+      </md-card>
+</div>

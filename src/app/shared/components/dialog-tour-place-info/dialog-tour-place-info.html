@@ -1,0 +1,29 @@
+<div md-dialog-title class="listTitle_d white_space"><md-icon class="titleIcon_d">pin_drop</md-icon> {{data.title}}</div>
+<div md-dialog-content>    
+    <div class="w100">
+        <div  *ngIf="data">
+            <img *ngIf="data.firstimage; else loadImg" class="listImg_d" [src]="data?.firstimage">
+            <ng-template #loadImg><img class="listImg_d listImgLoad" src="../../assets/img/loadImg.jpg"></ng-template>
+        </div>
+        <div  class="listItemRow_d listItemRow2" *ngIf="data">
+            <md-icon class="listIcon">mouse</md-icon>
+            <span [style.visibility]="data.readcount ? 'visible' : 'hidden'">{{data.readcount | pipeCommaSeparatedNumber }} 회 조회</span>
+        </div>
+        <div  class="listItemRow_d listItemRow2" *ngIf="data">
+                <md-icon class="listIcon">phone</md-icon>
+                <span *ngIf="data?.tel">{{data.tel}}</span>
+            </div>
+        <div *ngIf="data" class="listItemRow_d listItemRow3_d">
+            <md-icon id="listLocationIcon" class="listIcon">location_on</md-icon>
+            <span [style.visibility]="data.addr1 ? 'visible' : 'hidden'">{{data.addr1}} </span> 
+            <span *ngIf="data?.addr2">{{data.addr2}}</span>
+            <br/>
+            <a id="showMapTxt" (click)="toggleMap(data.title, data.addr1+' '+data.addr2);">지도보기</a>
+            <div id="map" [style.display]="isShowMap ? 'block' : 'none'" class="mapArea" ></div>
+        </div>
+    </div>
+
+</div>
+<div md-dialog-actions>
+  <button md-button class="btn_d" (click)="onNoClick()" tabindex="-1">확 인</button>
+</div>

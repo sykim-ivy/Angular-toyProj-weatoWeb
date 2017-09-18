@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+/* @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; */
+/* @import '~@angular/material/prebuilt-themes/purple-green.css'; */
+
+/* 스크롤바없애기*/
+body::-webkit-scrollbar { 
+    display: none; 
+}
+
+body > .inner {
+    display: none;
+}
+
+body.pg-loaded > .inner {
+    display: block;
+} 
+
+
+/* 스크롤바 보이기 
+::-webkit-scrollbar {
+    width: 9px; 
+    height: 8px;
+}
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+    display: none; 
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+    -webkit-border-radius: 10px; 
+    border-radius:10px; 
+}
+::-webkit-scrollbar-track-piece {
+    background: rgba(255, 255, 255, 0);
+}
+::-webkit-scrollbar-thumb {
+    height: 50px; 
+    width: 50px; 
+    background: rgba(255, 255, 255, 0.85); 
+    -webkit-border-radius: 8px; 
+    border-radius: 8px; 
+}
+*/
+
+body{
+ background-image: url('./assets/img/bg2.png');
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-color: rgb(248, 101, 113);
+}
+
+ul.ngx-pagination {
+    margin: 0px;
+}

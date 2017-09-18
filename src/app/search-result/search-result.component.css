@@ -1,0 +1,286 @@
+
+.inputArea {
+    margin: 55px 0 45px 0;
+}
+
+.mainTitle {
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 14px 16px;
+    margin-top: 15px;
+    color : #2C2F2F;
+}
+
+.topTitle {
+    font-family: 'Yanolja_Bold', sans-serif;
+    font-size: 19pt;
+}
+
+.resultTitle {
+    font-family: 'Yanolja_Bold', sans-serif;
+    font-size: 16pt;
+}
+
+.backIcon {
+    float: left; 
+    margin-right: 11px;
+    width: 30px;
+    height: 30px;
+    font-size: 20pt;
+    font-weight: bold;
+    color : rgb(247, 124, 112);
+}
+
+#wTable {
+    width: 100%;
+    text-align: center;
+}
+
+.noDataText { 
+    padding: 30px;
+    text-align: center;
+    color : #454343;
+    font-weight: 800;
+}
+.noDataHighlight{
+    color : #DC1E44;
+}
+.noDataDesc {
+    font-size: 0.75em;
+    font-weight: 400;
+    color : #454343;
+}
+.titleIcon {
+    float: left; 
+    margin-right: 11px;
+    color : #E54A3A;
+}
+
+.mainIptForm {
+    padding: 10px;
+    padding-bottom: 35px;
+    text-align: center;
+}
+
+.oneOfThreeCell {
+    width: 26%;
+    min-height: 180px;
+    display: inline-block;
+    margin: 0;
+    padding: 7px;
+    
+} 
+
+.wPaginatorArea{
+    float: right;
+}
+#wPaginatorText {
+    font-size: 0.8em;
+}
+.wPaginatorBtn {
+    float: right;
+    font-size: 16pt;
+    margin-right: 10px;
+}
+
+.contentCenter {
+    position: relative;
+    display: inline-block;
+
+}
+.wDay {
+    font-weight: bold;
+    font-size: 1em;
+}
+.wIcon {
+    display: block;
+    margin: 0px auto 13px auto;
+    width: 50px;
+    height: 50px;
+}
+.wIcon_noWeather {
+    display: block;
+    margin: 0px auto 13px auto;
+    width: 50px;
+    height: 50px;
+}
+.wContent {    
+    font-weight: bold;
+    font-size: 0.85em;
+    padding-bottom: 3px;
+}
+.wContent_existData {
+    color: #a01c1c;
+}
+.wContent_noData {
+    margin: 1px;
+    color: #666262;
+}
+
+.wContent2 {
+    font-weight: 600;
+    font-size: 0.75em;
+}
+.wContent2_noData {
+    color: #B9B9B9;
+}
+
+#listAreaCard {
+    padding: 5px 0px;
+}
+md-list-item{
+    height: 203px;
+    padding: 35px 0px 40px 0px;
+    margin-top: 110px;
+    border-bottom: 1px dashed #B9B9B9;
+}
+md-list {
+    padding-top: 0px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.listItemRow {
+    font-size: 10.5pt;
+    font-weight: 700;
+}
+
+.listItemRow2 {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.listItemRow3 {
+    margin-bottom: 10px;
+}
+
+.listItemRow4{
+    padding-left: 25px;
+}
+
+#listItemHits {
+    display: inline-block;
+    margin: 0;
+    margin-right: 5px;
+}
+
+#listItemPhone{
+    display: inline-block;
+    margin: 0;
+}
+
+.listTitle {
+    text-align: center;
+    font-size: 1.47em;
+    font-weight: bold;
+    padding-left: 3px;
+}
+
+.white_space_threeDot { 
+    position: relative;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+}
+
+.white_space { /*글자수가 영역넘어가는 경우 자동개행*/
+    white-space:pre-wrap; 
+    white-space:-pre-wrap; 
+    white-space:-o-pre-wrap; 
+    word-wrap:break-word; 
+    word-break:break-all; 
+    white-space:pre; 
+    white-space:-hp-pre-wrap; 
+    white-space:pre-line; 
+}
+
+.listSubTitle {
+    font-weight: 700;
+    font-size: 0.95em;
+    color: cornflowerblue;
+    margin-top : 55px;
+    font-family: 'Yanolja_Bold', sans-serif;
+}
+.listIcon {
+    vertical-align: middle;
+    margin-top: 8px;   
+    margin-left: 4px;
+    font-size: 16px;
+    color: cornflowerblue;
+}
+#listLocationIcon {
+    font-size: 19px;
+}
+
+.listImg {
+    width: 200px;
+    height: 130px;
+    margin-top: 14px;
+    margin-bottom: 3px;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;   
+}
+
+.listImgLoad {
+    border: 0.4px dotted grey;    
+}
+
+.resultPageBtn{
+    float: right;
+    background-color: rgb(249, 101, 113);
+    font-family: 'Yanolja_Bold', sans-serif;
+    font-size: 19px;
+    color: white;
+}
+
+/* Spinner */
+/* https://www.npmjs.com/package/ng2-component-spinner */
+.sc-background[_ngcontent-c2] {
+    background-color:  rgba(195, 183, 183, 0.7);
+}
+
+.spinner-2 {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: auto;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color : #F7C203;
+    opacity:0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    
+    -webkit-animation:sk-bounce 2.0s infinite ease-in-out;
+    animation:sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+    z-index: 0;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
